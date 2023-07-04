@@ -1,0 +1,28 @@
+{
+  "name": "full-backend-zero",
+  "version": "1.0.0",
+  "description": "Backend Project",
+  "main": "sever.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node sever.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TanLeJS/NodeJS_RestfulAPI.git"
+  },
+  "keywords": [
+    "nodejs",
+    "react"
+  ],
+  "author": "Tan Le",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TanLeJS/NodeJS_RestfulAPI/issues"
+  },
+  "homepage": "https://github.com/TanLeJS/NodeJS_RestfulAPI#readme",
+  "dependencies": {
+    "express": "4.18.2"
+  },
+  "devDependencies": {}
+}
