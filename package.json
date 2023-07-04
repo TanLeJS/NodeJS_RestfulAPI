@@ -5,7 +5,7 @@
   "main": "sever.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/sever.js"
+    "start": "nodemon ./src/sever.js"
   },
   "repository": {
     "type": "git",
@@ -22,8 +22,11 @@
   },
   "homepage": "https://github.com/TanLeJS/NodeJS_RestfulAPI#readme",
   "dependencies": {
+    "dotenv": "16.0.3",
     "ejs": "3.1.8",
     "express": "4.18.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "2.0.20"
+  }
 }
