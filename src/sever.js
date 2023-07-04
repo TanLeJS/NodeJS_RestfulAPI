@@ -10,7 +10,7 @@ const hostname = process.env.HOST_NAME
 configViewEngine(app)
 
 // khai báo route
-app.use('/test', webRoutes)
+app.use('/', webRoutes)
 
 
 app.listen(port, hostname, () => {
