@@ -21,12 +21,12 @@ app.use('/', webRoutes)
 
 
 // simple query
-connection.query(
-    'SELECT * FROM Users u',
-    function (err, results, fields) {
+// connection.query(
+//     'SELECT * FROM Users u',
+//     function (err, results, fields) {
 
-    }
-);
+//     }
+// );
 
 app.listen(port, hostname, () => {
 

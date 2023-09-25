@@ -49,3 +49,13 @@ button {
     margin: 10px;
     cursor: pointer;
 }
+
+.table-container {
+    padding: 15 20;
+}
+
+.title {
+    font-size: 25;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
