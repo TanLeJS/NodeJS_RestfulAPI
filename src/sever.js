@@ -17,17 +17,9 @@ configViewEngine(app)
 // khai báo route
 app.use('/', webRoutes)
 
+connection()
+
 //test connection
 
-
-// simple query
-// connection.query(
-//     'SELECT * FROM Users u',
-//     function (err, results, fields) {
-
-//     }
-// );
-
 app.listen(port, hostname, () => {
-
 })
