@@ -15,11 +15,23 @@ app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
 configViewEngine(app)
 
 // khai báo route
-app.use('/', webRoutes)
+app.use('/', webRoutes);
 
-connection()
+
+
+
+(async() => {
+    try {
+        await connection();
+        app.listen(port, hostname, () => {
+            console.log(`Example app listening on port ${port}`)
+        })
+    } catch (error) {
+        console.log(" >>> Backend Zero app connect to DB:  ", error)
+    }
+})()
+
+
 
 //test connection
 
-app.listen(port, hostname, () => {
-})
