@@ -6,6 +6,7 @@ const app = express() // app express
 const port = process.env.PORT || 8888 // port => hardcode
 const hostname = process.env.HOST_NAME
 const connection = require("./config/database")
+const mongoose = require("mongoose")
 
 // config req.body
 app.use(express.json()); // Used to parse JSON bodies
@@ -18,7 +19,14 @@ configViewEngine(app)
 app.use('/', webRoutes);
 
 
+const kittySchema = new mongoose.Schema({
+    name: String
+  });
 
+
+const Kitten = mongoose.model('Kitten', kittySchema);
+const cat = new Kitten({ name: 'Hoi dan IT cat' });
+cat.save();
 
 (async() => {
     try {
