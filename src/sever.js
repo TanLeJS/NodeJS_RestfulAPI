@@ -6,7 +6,7 @@ const app = express() // app express
 const port = process.env.PORT || 8888 // port => hardcode
 const hostname = process.env.HOST_NAME
 const connection = require("./config/database")
-const Kitten = require("./models/Kitten")
+
 
 // config req.body
 app.use(express.json()); // Used to parse JSON bodies
@@ -18,8 +18,6 @@ configViewEngine(app)
 // khai báo route
 app.use('/', webRoutes);
 
-const cat = new Kitten({ name: 'Hoi dan IT model' });
-cat.save();
 
 (async() => {
     try {
