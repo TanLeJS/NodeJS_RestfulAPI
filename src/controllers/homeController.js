@@ -25,9 +25,9 @@ const postCreateUser = async (req, res) => {
     //     `   INSERT INTO Users  (email ,name, city) VALUES(?, ?, ?); `, [email, name, city]
     // );
     await User.create({
-        email,
-        name,
-        city
+        email : email,
+        name: name,
+        city: city,
     })
     res.send("create user success")
 }
@@ -38,7 +38,8 @@ const getCreateUser = (req, res) => {
 
 const getUpdatePage = async(req, res) => {
     const userID = req.params.id;
-    let user =  await getUserById(userID)
+    // let user =  await getUserById(userID)
+    let user = await User.findById(userID).exec();
     res.render("edit.ejs", {userEdit: user}) // x <- y
 }
 
@@ -47,7 +48,8 @@ const postUpdateUser = async (req, res) => {
     let name = req.body.myname;
     let city = req.body.city;
     let userId = req.body.userId;
-    await updateUserById(email,name,city,userId)
+    // await updateUserById(email,name,city,userId)
+    await User.updateOne({_id :userId },{name: name, email:email, city: city})
     res.redirect("/");
 }
 

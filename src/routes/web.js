@@ -6,8 +6,6 @@ const { getHomepage, getABC, getTan, postCreateUser, getCreateUser, getUpdatePag
 
 //khai báo route
 router.get('/', getHomepage)
-router.get('/abc', getABC)
-router.get('/tan', getTan)
 router.post('/create-user', postCreateUser)
 router.get('/create', getCreateUser)
 router.get('/update/:id', getUpdatePage)
