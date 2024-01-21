@@ -61,7 +61,8 @@ const postDeleteUser = async(req,res) => {
 const postHandleRemoveUser = async(req,res) => {
     const id = req.body.userId
     // await deleteUserById(id)
-    await User.deleteOne({_id: id})
+    let delete_status = await User.deleteOne({_id: id})
+    console.log(">>> result", delete_status)
     res.redirect("/")
 }
 
