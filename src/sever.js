@@ -6,6 +6,7 @@ const apiRoutes = require("./routes/api")
 const app = express() // app express
 const port = process.env.PORT || 8888 // port => hardcode
 const hostname = process.env.HOST_NAME
+const fileUpload = require('express-fileupload');
 const connection = require("./config/database")
 
 
@@ -15,6 +16,10 @@ app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
 
 // config template engine
 configViewEngine(app)
+
+// config file upload
+app.use(fileUpload());
+
 
 // khai báo route
 app.use('/', webRoutes);
