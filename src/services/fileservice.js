@@ -1,36 +1,41 @@
-const path = require("path")
-const { base } = require("../models/user")
+const path = require("path");
 
+const uploadSingleFile = async (fileObject) => {
+    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
 
-const uploadSingleFile = async(fileObject) => {
+    // save => public/images/upload
+    //remember to create the upload folder first
+    let uploadPath = path.resolve(__dirname, "../public/images/upload");
+    // console.log(">>> check fileObject: ", path.resolve(__dirname, "../public/images/upload"))
 
-    // save => public/image/upload
-    // abc.png => abc time-stamp.png
-    // upload multiple file
+    // abc.png => abc-timestamp.png
 
-    let uploadPath = path.resolve(__dirname, "../public/image/upload")
+    //get image extension
+    let extName = path.extname(fileObject.name);
 
+    //get image's name (without extension)
+    let baseName = path.basename(fileObject.name, extName);
 
-    let extName = path.extname(fileObject.name)
-
-    let baseName = path.basename(fileObject.name, extName)
-    
+    //create final path: eg: /upload/your-image.png
     let finalName = `${baseName}-${Date.now()}${extName}`
-    let finalPath = `${uploadPath}/${finalName}
-    `
+    let finalPath = `${uploadPath}/${finalName}`;
+
+    // console.log("final path: ", finalPath)
+
     try {
-        await fileObject.mv(uploadPath)
+        await fileObject.mv(finalPath);
         return {
-            status: "success",
+            status: 'success',
             path: finalName,
             error: null
-          }
-    } catch (error) {
+        }
+    } catch (err) {
+        console.log(">>> check error: ", err)
         return {
-            status: "failed",
+            status: 'failed',
             path: null,
-            error: JSON.stringify(error)
-          }
+            error: JSON.stringify(err)
+        }
     }
 }
 
@@ -83,6 +88,5 @@ const uploadMultipleFiles = async (filesArr) => {
 }
 
 module.exports = {
-    uploadSingleFile,
-    uploadMultipleFiles
+    uploadSingleFile, uploadMultipleFiles
 }
