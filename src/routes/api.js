@@ -1,7 +1,7 @@
 const express = require("express")
 const routerAPI = express.Router()
 const {getUsersAPIs,postCreateUserAPI,putUpdateUserAPI,deleteUserAPI,postUploadSingleFileAPI,postUploadMultipleFilesAPI} = require("../controllers/apiController")
-const {postCreateCustomer} = require("../controllers/customerController")
+const {postCreateCustomer,postCreateArrayCustomers} = require("../controllers/customerController")
 
 //khai báo route
 
@@ -14,6 +14,7 @@ routerAPI.post("/file", postUploadSingleFileAPI)
 routerAPI.post("/files", postUploadMultipleFilesAPI)
 
 routerAPI.post('/customers', postCreateCustomer)
+routerAPI.post('/customers-many', postCreateArrayCustomers)
 
 
 
