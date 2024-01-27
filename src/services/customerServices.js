@@ -1,5 +1,5 @@
 const Customer = require("../models/customer")
-const User = require("../models/user")
+
 
 const createCustomerService = async (customerData) => {
     console.log("Check customer", customerData)
@@ -48,12 +48,21 @@ const putUpdateCustomerService = async (id, name,email, address) => {
         console.log(">>> check result: ", error)
         return null
     }
-r
 }
 
+const deleteACustomerService = async (id) => {
+    try {
+        let result = await Customer.deleteById(id)
+        return result
+    } catch (error) {
+        console.log(">>> check result: ", error)
+        return null
+    }
+}
 module.exports = {
     createCustomerService,
     createArrayCustomerService,
     getAllCustomersService,
-    putUpdateCustomerService
+    putUpdateCustomerService,
+    deleteACustomerService
 }

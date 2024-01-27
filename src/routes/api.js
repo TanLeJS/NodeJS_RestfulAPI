@@ -1,7 +1,7 @@
 const express = require("express")
 const routerAPI = express.Router()
 const {getUsersAPIs,postCreateUserAPI,putUpdateUserAPI,deleteUserAPI,postUploadSingleFileAPI,postUploadMultipleFilesAPI} = require("../controllers/apiController")
-const {postCreateCustomer,postCreateArrayCustomers,getAllCustomers,putUpdateCustomer} = require("../controllers/customerController")
+const {postCreateCustomer,postCreateArrayCustomers,getAllCustomers,putUpdateCustomer,deleteACustomer} = require("../controllers/customerController")
 
 //khai báo route
 
@@ -17,6 +17,7 @@ routerAPI.get("/customers", getAllCustomers)
 routerAPI.post('/customers', postCreateCustomer)
 routerAPI.post('/customers-many', postCreateArrayCustomers)
 routerAPI.put('/customers', putUpdateCustomer)
+routerAPI.delete('/customers', deleteACustomer)
 
 
 
