@@ -8,14 +8,6 @@ const getHomepage = async(req, res) => {
     return res.render("home.ejs", {listUsers: results})
 }
 
-const getABC = (req, res) => {
-    res.send('get abc')
-}
-
-const getTan = (req, res) => {
-    res.render('sample.ejs')
-}
-
 const postCreateUser = async (req, res) => {
     let email = req.body.email;
     let name = req.body.myname;
@@ -64,8 +56,6 @@ const postHandleRemoveUser = async(req,res) => {
 
 module.exports = {
     getHomepage,
-    getABC,
-    getTan,
     postCreateUser,
     getCreateUser,
     getUpdatePage,
