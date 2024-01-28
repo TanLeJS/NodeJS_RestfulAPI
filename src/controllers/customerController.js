@@ -2,6 +2,9 @@ const { uploadSingleFile } = require("../services/fileService")
 const { createCustomerService, createArrayCustomerService, getAllCustomersService,putUpdateCustomerService,deleteACustomerService,deleteArrayCustomersService } = require("../services/customerServices")
 const { update } = require("../models/customer")
 const Customer = require("../models/customer")
+const aqp = require('api-query-params') ;
+
+
 module.exports = {
     postCreateCustomer: async (req, res) => {
         let { name, address, phone, email, description } = req.body
@@ -47,12 +50,13 @@ module.exports = {
 
     },
     getAllCustomers: async (req,res) => {
+
         let limit = req.query.limit;
         let page = req.query.page
         let result = null
         let name = req.query.name
         if (limit && page) {
-            customers = await getAllCustomersService(limit,page,name);
+            customers = await getAllCustomersService(limit,page,name, req.query);
         }
         else
             customers = await getAllCustomersService();
