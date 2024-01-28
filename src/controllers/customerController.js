@@ -50,8 +50,9 @@ module.exports = {
         let limit = req.query.limit;
         let page = req.query.page
         let result = null
+        let name = req.query.name
         if (limit && page) {
-            customers = await getAllCustomersService(limit,page);
+            customers = await getAllCustomersService(limit,page,name);
         }
         else
             customers = await getAllCustomersService();
