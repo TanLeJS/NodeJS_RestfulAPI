@@ -5,15 +5,15 @@ const createCustomerService = async (customerData) => {
     console.log("Check customer", customerData)
     try {
         let result = await Customer.create({
-            name : customerData.name,
-            address: customerData.address, 
-            phone: customerData.phone, 
-            email: customerData.email, 
-            description: customerData.description, 
+            name: customerData.name,
+            address: customerData.address,
+            phone: customerData.phone,
+            email: customerData.email,
+            description: customerData.description,
             image: customerData.image
         })
         return result
-        
+
     } catch (error) {
         console.log(error)
         return null
@@ -30,7 +30,7 @@ const createArrayCustomerService = async (arr) => {
     }
 }
 
-const getAllCustomersService = async (req,res) => {
+const getAllCustomersService = async (req, res) => {
     try {
         const result = await Customer.find({})
         return result
@@ -40,9 +40,9 @@ const getAllCustomersService = async (req,res) => {
     }
 }
 
-const putUpdateCustomerService = async (id, name,email, address) => {
+const putUpdateCustomerService = async (id, name, email, address) => {
     try {
-        let customer = await User.updateOne({_id :id },{name,email,address})
+        let customer = await User.updateOne({ _id: id }, { name, email, address })
         return customer
     } catch (error) {
         console.log(">>> check result: ", error)
@@ -60,9 +60,9 @@ const deleteACustomerService = async (id) => {
     }
 }
 
-const deleteArrayCustomersService = async (customersId) =>{
+const deleteArrayCustomersService = async (customersId) => {
     try {
-        result = await Customer.delete({_id: {$in: customersId}})
+        result = await Customer.delete({ _id: { $in: customersId } })
         return result
     } catch (error) {
         console.log(">>> check result: ", error)

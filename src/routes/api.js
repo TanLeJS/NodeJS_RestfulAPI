@@ -20,6 +20,21 @@ routerAPI.put('/customers', putUpdateCustomer)
 routerAPI.delete('/customers', deleteACustomer)
 routerAPI.delete('/customers-many', deleteArrayCustomers)
 
+routerAPI.get('/info', (req,res) => {
+    console.log(">>> check: ", req.query)
+    return res.status(200).json({
+        data: req.query
+    })
+})
+
+routerAPI.get('/info/:name/:address', (req,res) => {
+    console.log(">>> check req.params: ", req.params)
+    return res.status(200).json({
+        data: req.params
+    })
+})
+
+
 
 
 
