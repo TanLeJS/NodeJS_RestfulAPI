@@ -1,4 +1,5 @@
 const Project = require("../models/project");
+const aqp = require("api-query-params");
 
 const postCreateProjectService = async (data) => {
   if (data.type === "EMPTY-PROJECT") {
@@ -16,6 +17,21 @@ const postCreateProjectService = async (data) => {
   }
 };
 
+const getProject = async (queryString) => {
+  const page = queryString.page;
+
+  const { filter, limit, population } = aqp(queryString);
+  delete filter.page;
+  let offset = (page - 1) * limit;
+  result = await Project.find(filter)
+    .populate(population)
+    .skip(offset)
+    .limit(limit)
+    .exec();
+  return result;
+};
+
 module.exports = {
   postCreateProjectService,
+  getProject,
 };

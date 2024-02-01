@@ -17,7 +17,10 @@ const {
   deleteArrayCustomers,
 } = require("../controllers/customerController");
 
-const { postCreateProject } = require("../controllers/projectsController");
+const {
+  postCreateProject,
+  getAllProjects,
+} = require("../controllers/projectsController");
 
 //khai báo route
 // Users route
@@ -40,6 +43,7 @@ routerAPI.delete("/customers-many", deleteArrayCustomers);
 
 // Project routes
 routerAPI.post("/projects", postCreateProject);
+routerAPI.get("/projects", getAllProjects);
 
 // Differences between req.query and req.params
 routerAPI.get("/info", (req, res) => {
