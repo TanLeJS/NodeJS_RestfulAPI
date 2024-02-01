@@ -24,6 +24,13 @@ const {
   deleteProjects,
 } = require("../controllers/projectsController");
 
+const {
+  getTasks,
+  createTask,
+  updateTask,
+  deleteTask,
+} = require("../controllers/tasksController");
+
 //khai báo route
 // Users route
 routerAPI.get("/users", getUsersAPIs);
@@ -48,6 +55,12 @@ routerAPI.post("/projects", postCreateProject);
 routerAPI.get("/projects", getAllProjects);
 routerAPI.put("/projects", putUpdateProjects);
 routerAPI.delete("/projects", deleteProjects);
+
+//Task routes
+routerAPI.post("/tasks", createTask);
+routerAPI.get("/tasks", getTasks);
+routerAPI.put("/tasks", updateTask);
+routerAPI.delete("/tasks", deleteTask);
 
 // Differences between req.query and req.params
 routerAPI.get("/info", (req, res) => {

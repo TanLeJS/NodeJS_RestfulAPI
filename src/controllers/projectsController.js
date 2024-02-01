@@ -37,7 +37,6 @@ const putUpdateProjects = async (req, res) => {
 
 const deleteProjects = async (req, res) => {
   let id = req.body.id;
-  console.log(id);
   let result = await deleteProjectService(id);
   return res.status(200).json({
     errorCode: 0,
