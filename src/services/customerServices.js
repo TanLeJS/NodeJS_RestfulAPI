@@ -50,7 +50,10 @@ const getAllCustomersService = async (limit, page, name, queryString) => {
 
 const putUpdateCustomerService = async (id, name, email, address) => {
   try {
-    let customer = await User.updateOne({ _id: id }, { name, email, address });
+    let customer = await Customer.updateOne(
+      { _id: id },
+      { name, email, address }
+    );
     return customer;
   } catch (error) {
     console.log(">>> check result: ", error);

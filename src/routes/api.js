@@ -20,6 +20,8 @@ const {
 const {
   postCreateProject,
   getAllProjects,
+  putUpdateProjects,
+  deleteProjects,
 } = require("../controllers/projectsController");
 
 //khai báo route
@@ -44,6 +46,8 @@ routerAPI.delete("/customers-many", deleteArrayCustomers);
 // Project routes
 routerAPI.post("/projects", postCreateProject);
 routerAPI.get("/projects", getAllProjects);
+routerAPI.put("/projects", putUpdateProjects);
+routerAPI.delete("/projects", deleteProjects);
 
 // Differences between req.query and req.params
 routerAPI.get("/info", (req, res) => {

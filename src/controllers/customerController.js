@@ -79,6 +79,7 @@ module.exports = {
       data: updatedCustomer,
     });
   },
+
   deleteACustomer: async (req, res) => {
     let id = req.body.id;
     let result = await deleteACustomerService(id);
@@ -87,6 +88,7 @@ module.exports = {
       data: result,
     });
   },
+
   deleteArrayCustomers: async (req, res) => {
     let customersId = req.body.customersId;
     let result = await deleteArrayCustomersService(customersId);
