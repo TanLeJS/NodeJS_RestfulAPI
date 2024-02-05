@@ -25,19 +25,9 @@ const getTasksService = async (queryString) => {
   return result;
 };
 
-const updateTaskService = async (
-  id,
-  name,
-  startDate,
-  endDate,
-  description,
-  status
-) => {
+const updateTaskService = async (data) => {
   try {
-    let task = await Task.updateOne(
-      { _id: id },
-      { name, startDate, endDate, description, status }
-    );
+    let task = await Task.updateOne({ _id: data.id }, { ...data });
     return task;
   } catch (error) {
     console.log(">>> check result: ", error);

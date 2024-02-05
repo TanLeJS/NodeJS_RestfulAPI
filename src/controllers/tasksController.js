@@ -22,15 +22,7 @@ const getTasks = async (req, res) => {
 };
 
 const updateTask = async (req, res) => {
-  let { id, name, startDate, endDate, description, status } = req.body;
-  let result = await updateTaskService(
-    id,
-    name,
-    startDate,
-    endDate,
-    description,
-    status
-  );
+  let result = await updateTaskService(req.body);
   return res.status(200).json({
     EC: 0,
     data: result,
