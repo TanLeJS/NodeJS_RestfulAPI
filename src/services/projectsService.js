@@ -2,6 +2,15 @@ const Project = require("../models/project");
 const aqp = require("api-query-params");
 
 const postCreateProjectService = async (data) => {
+  if (data.type === "ADD-TASKS") {
+    let myProject = await Project.findById(data.projectId).exec();
+    for (let i = 0; i < data.taskArr.length; i++) {
+      myProject.tasks.push(data.taskArr[i]);
+    }
+    let result = await myProject.save();
+    return result;
+  }
+
   if (data.type === "EMPTY-PROJECT") {
     let result = await Project.create(data);
     return result;
