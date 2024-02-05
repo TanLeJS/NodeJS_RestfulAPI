@@ -49,7 +49,6 @@ const deleteTaskService = async (id) => {
     let result = await Task.deleteById(id);
     return result;
   } catch (error) {
-    console.log(">>> check result: ", error);
     return null;
   }
 };
