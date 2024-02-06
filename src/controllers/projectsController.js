@@ -7,8 +7,9 @@ const {
 const Joi = require("joi");
 
 const postCreateProject = async (req, res) => {
-  let { name, startDate, endDate, description, leader } = req.body;
+  let { type, name, startDate, endDate, description, leader } = req.body;
   const schema = Joi.object({
+    type: Joi.string(),
     name: Joi.string().required().max(50),
     startDate: Joi.date().iso().required(),
     endDate: Joi.date().iso().greater(Joi.ref("startDate")).required(),
