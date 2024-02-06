@@ -7,13 +7,33 @@ const {
   deleteACustomerService,
   deleteArrayCustomersService,
 } = require("../services/customerServices");
-const { update } = require("../models/customer");
-const Customer = require("../models/customer");
-const aqp = require("api-query-params");
+const Joi = require("joi");
 
 module.exports = {
   postCreateCustomer: async (req, res) => {
     let { name, address, phone, email, description } = req.body;
+    const schema = Joi.object({
+      name: Joi.string().alphanum().min(3).max(30).required(),
+
+      address: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")),
+
+      phone: Joi.string().pattern(new RegExp("^[0-9]{10}$")),
+
+      access_token: [Joi.string(), Joi.number()],
+
+      email: Joi.string().email({
+        minDomainSegments: 2,
+        tlds: { allow: ["com", "net"] },
+      }),
+      description: Joi.string(),
+    });
+    const { error } = schema.validate(req.body);
+    if (error) {
+    } else {
+    }
+    return res.status(200).json({
+      mes: error,
+    });
 
     let imageURL = "";
     if (!req.files || Object.keys(req.files).length === 0) {
